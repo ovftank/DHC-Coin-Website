@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DHC: Shaping the Future of Finance, One Transaction at a Time</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script>
+            async function connectMetaMask() {
+                if (typeof window.ethereum !== 'undefined') {
+                    try {
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        document.getElementById('userName').innerText = '<%= user.name %>';
+                        document.getElementById('userBalance').innerText = '<%= user.balance %>';
+                        document.getElementById('content').style.display = 'block';
+                        document.getElementById('loginButton').style.display = 'none';
+                    } catch (error) {
+                        alert('Lỗi, mở console để xem thử')
+                        console.error(error);
+                    }
+                } else {
+                    document.getElementById('state').innerHTML = 'MetaMask Exténion chưa được cài đặt!';
+                }
+            }
+        </script>
+    </head>
+
+    <body class="appearance-none flex justify-center items-center min-h-screen">
+        <button id="loginButton" class="bg-blue-500 border rounded py-2 px-2 text-white" onclick="connectMetaMask()">Connect
+            MetaMask</button>
+        <div id="state"></div>
+        <div id="content" style="display: none;">
+            <h1>Xin chao, <span id="userName"></span>!</h1>
+            <p>So du: <span id="userBalance"></span> USD</p>
+        </div>
+    </body>
+
+</html>
