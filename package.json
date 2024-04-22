@@ -1,28 +1,9 @@
 {
-  "name": "web3-app",
-  "version": "0.1.0",
-  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "14.1.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "web3": "^4.7.0"
+    "start": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "tailwindcss": "^3.4.3",
+    "prettier-plugin-tailwindcss": "^0.5.14"
   }
 }

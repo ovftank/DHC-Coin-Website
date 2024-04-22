@@ -1,0 +1,579 @@
+<!doctype html>
+<html class="scroll-smooth">
+  <head>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="main.js"></script>
+    <title>DHC</title>
+  </head>
+
+  <body class="bg-gradient-to-r from-black to-gray-800 font-sans">
+    <!-- Navbar -->
+    <nav
+      class="border-b border-gray-200 bg-gradient-to-r from-black to-gray-800"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 justify-between">
+          <div class="flex">
+            <div class="flex flex-shrink-0 items-center">
+              <a href="#" class="flex items-center">
+                <img src="https://via.placeholder.com/40x40" alt="DHC Logo" />
+                <h1
+                  class="ml-2 text-lg font-semibold tracking-tight text-gray-100"
+                >
+                  DHC
+                </h1>
+              </a>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a
+                href="#home"
+                class="flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:text-gray-100"
+                data-target="home"
+                >Home</a
+              >
+              <a
+                href="#ecosystems"
+                class="flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:text-gray-100"
+                data-target="ecosystems"
+                >Ecosystems</a
+              >
+              <a
+                href="#tokens"
+                class="flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:text-gray-100"
+                data-target="tokens"
+                >Tokens</a
+              >
+              <a
+                href="#participators"
+                class="flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:text-gray-100"
+                data-target="participators"
+                >Participators</a
+              >
+              <a
+                href="#roadmap"
+                class="flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:text-gray-100"
+                data-target="roadmap"
+                >Roadmap</a
+              >
+            </div>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <a
+              href="./pre-sales.html"
+              class="rounded bg-gradient-to-r from-blue-600 to-blue-400 px-4 py-2 font-bold text-gray-100 hover:from-pink-500 hover:to-yellow-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mr-1 inline h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              Login with MetaMask
+            </a>
+          </div>
+          <div class="-mr-2 flex items-center sm:hidden">
+            <button
+              class="hover: focus: inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:text-gray-500 focus:outline-none"
+              aria-label="Main menu"
+              aria-expanded="false"
+              id="mobile-menu-button"
+            >
+              <svg
+                class="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="sm:hidden" id="mobile-menu">
+        <div id="mobile-menu-content" class="hidden space-y-1 px-2 pb-3 pt-2">
+          <a
+            href="#home"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-200 hover:bg-gray-50 hover:text-gray-100"
+            data-target="home"
+            >Home</a
+          >
+          <a
+            href="#ecosystem"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-200 hover:bg-gray-50 hover:text-gray-100"
+            data-target="ecosystems"
+            >Ecosystems</a
+          >
+          <a
+            href="#tokens"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-200 hover:bg-gray-50 hover:text-gray-100"
+            data-target="tokens"
+            >Tokens</a
+          >
+          <a
+            href="#participators"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-200 hover:bg-gray-50 hover:text-gray-100"
+            data-target="participators"
+            >Participators</a
+          >
+          <a
+            href="#roadmap"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-200 hover:bg-gray-50 hover:text-gray-100"
+            data-target="roadmap"
+            >Roadmap</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="rounded-e-lg bg-gradient-to-r from-black to-gray-800 p-8 py-16 shadow"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1
+            id="home"
+            class="animate-showIn md:animate-slideDown animate-delay-300 bg-gradient-to-r from-gray-500 via-white to-gray-500 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent hover:from-gray-400 hover:via-white hover:to-gray-400 sm:text-5xl md:text-6xl"
+          >
+            The World's Best Blockchain-Based Freelancer Community
+          </h1>
+          <p
+            class="animate-showIn md:animate-slideDown animate-delay-500 mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl"
+          >
+            The first Freelance Marketplaces which makes simplifies and
+            standardizes data with blockchain technology. We provide
+            user-friendly, efficient, and secure crypto solutions and utilize
+            blockchain technology.
+          </p>
+          <div
+            class="animate-showIn md:animate-slideDown animate-delay-700 sm:mt-8 sm:flex sm:justify-center"
+          >
+            <div class="rounded-md shadow">
+              <a
+                href="./pre-sales.html"
+                class="mt-5 flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-blue-600 to-blue-400 px-8 py-3 text-base font-medium text-gray-100 hover:from-pink-500 hover:to-yellow-500 md:mt-0 md:px-10 md:py-4 md:text-lg"
+                data-target="ecosystems"
+              >
+                Get Started
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ecosystems -->
+    <section
+      class="container mx-auto bg-gradient-to-r from-black to-gray-800 p-2 py-12"
+    >
+      <h2
+        id="ecosystems"
+        class="mb-8 text-center text-3xl font-bold text-gray-100"
+      >
+        The DHC Ecosystem
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+        <div
+          class="ecosystem opacity-0 rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <img
+            src="https://via.placeholder.com/200x200"
+            alt="Illustration of a marketplace"
+            class="mx-auto mb-4 h-16 w-16"
+          />
+          <h3 class="mb-2 text-xl font-bold text-gray-100">One Marketplace</h3>
+          <p class="text-gray-200">
+            One International Marketplace that combines online store and
+            services around the world. Buy any goods or services with our DHC
+            tokens.
+          </p>
+        </div>
+        <div
+          class="ecosystem opacity-0 rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <img
+            src="https://via.placeholder.com/200x200"
+            alt="Illustration of a cryptocurrency"
+            class="mx-auto mb-4 h-16 w-16"
+          />
+          <h3 class="mb-2 text-xl font-bold text-gray-100">
+            Low Transaction Cost
+          </h3>
+          <p class="text-gray-200">
+            With blockchain technology in the DHC platform, users can quickly
+            get paid for their services without having to go through strict or
+            delayed payment procedures with low costs.
+          </p>
+        </div>
+        <div
+          class="ecosystem opacity-0 rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <img
+            src="https://via.placeholder.com/200x200"
+            alt="Illustration of a blockchain"
+            class="mx-auto mb-4 h-16 w-16"
+          />
+          <h3 class="mb-2 text-xl font-bold text-gray-100">Anti-Cheating</h3>
+          <p class="text-gray-200">
+            With the integration of blockchain technology into the platform,
+            every data on DHC will be stored on the blockchain which is
+            immutable and falsify-proof as no one can tamper with them.
+          </p>
+        </div>
+        <div
+          class="ecosystem opacity-0 rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <img
+            src="https://via.placeholder.com/200x200"
+            alt="Illustration of a secure padlock or handshake"
+            class="mx-auto mb-4 h-16 w-16"
+          />
+          <h3 class="mb-2 text-xl font-bold text-gray-100">
+            Secure Transactions
+          </h3>
+          <p class="text-gray-200">
+            Ensuring the safety of every transaction is paramount within the DHC
+            ecosystem. Through blockchain technology, DHC ensures secure and
+            tamper-proof exchanges, protecting users from fraud.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tokens -->
+    <section class="container mx-auto p-2 py-12">
+      <h2 id="tokens" class="mb-8 text-center text-3xl font-bold text-gray-100">
+        Tokens
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+        <div
+          class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <h3 class="mb-2 text-xl font-bold text-gray-100">Token Recipients</h3>
+          <ul class="list-disc pl-6">
+            <li>
+              Tokens allocated for Private Sale: 16.5% (Unlock tokens after the
+              end of Private Sale)
+            </li>
+            <li>Public Sale: 33.3% (Sale in Q1- 2024)</li>
+            <li>Core Team: 10% (24 months lockup)</li>
+            <li>Advisor: 5% (18 months lockup)</li>
+            <li>Network growth Fund: 35% (36 months lockup)</li>
+          </ul>
+        </div>
+        <div
+          class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <h3 class="mb-2 text-xl font-bold text-gray-100">Token Details</h3>
+          <ul class="list-disc pl-6">
+            <li>Token Name: DHC</li>
+            <li>Token Symbol: DHC</li>
+            <li>Blockchain: BSC</li>
+            <li>Token Standard: BEP20</li>
+            <li>Token Type: Utility</li>
+            <li>Max Supply: 1,000,000,000 DHC</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Participators -->
+
+    <section
+      class="container mx-auto bg-gradient-to-r from-black to-gray-800 p-2 py-12"
+    >
+      <h2
+        id="participators"
+        class="mb-8 text-center text-3xl font-bold text-gray-100"
+      >
+        For Participators
+      </h2>
+      <div
+        class="mb-5 hidden rounded-lg bg-gradient-to-r from-black to-gray-800 p-12 shadow sm:block"
+      >
+        <h3 class="mb-2 text-xl font-bold text-gray-100">
+          Businessmen and Individuals
+        </h3>
+        <p class="mb-4 text-gray-200">
+          DHC is the perfect platform for businessmen and individuals who
+          require digital services for their businesses or personal use. The
+          services found on the platform are completely determined by the
+          Sellers and could range from web design, writing, programming,
+          finance, and lots more.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div>
+          <div
+            class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+          >
+            <div class="list-disc pl-6">
+              <div class="grid grid-cols-1">
+                <div class="mb-4">
+                  <h4 class="mb-2 text-lg font-bold text-gray-100">
+                    Search for service
+                  </h4>
+                  <p class="text-gray-200">
+                    Buyers can use the search feature to find services they need
+                    on the DHC platform.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="mb-2 text-lg font-bold text-gray-100">
+                    Connect human service provider
+                  </h4>
+                  <p class="text-gray-100">
+                    After searching for a required service, the search results
+                    display a list of human service providers offering such
+                    service. This leaves the buyer to make a choice and proceed
+                    to connect with the desired service provider.
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1">
+                <div>
+                  <h4 class="mb-2 text-lg font-bold text-gray-100">
+                    Undertake the two parties to approve and complete the
+                    service
+                  </h4>
+                  <p class="text-gray-100">
+                    Once the service contract is signed, both parties must
+                    approve and complete the service according to the
+                    agreed-upon terms.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden items-center justify-center object-cover sm:flex">
+          <img
+            src="https://via.placeholder.com/600x400"
+            alt="Illustration of businessmen and individuals searching for services"
+            class="mb-4 rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+
+    <section
+      class="container mx-auto bg-gradient-to-r from-black to-gray-800 p-2 py-12"
+    >
+      <h2
+        id="roadmap"
+        class="mb-8 text-center text-3xl font-bold text-gray-100"
+      >
+        Roadmap
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+        <div
+          class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <h3 class="mb-2 text-xl font-bold text-gray-100">2022</h3>
+          <ul class="list-disc pl-6">
+            <li>Check the separate smart contract of the block-based DHC</li>
+            <li>
+              Develop a privacy policy for transparently distributed services
+              between buyers and sellers on a BEP20 platform.
+            </li>
+            <li>
+              Test the services of the algorithm in the ecosystem on the
+              Blockchain platform, and the ability to extend the decentralized
+              application to third parties.
+            </li>
+            <li>
+              Analyzing the market, and assessing service potential from 2023 to
+              the future.
+            </li>
+          </ul>
+        </div>
+        <div
+          class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <h3 class="mb-2 text-xl font-bold text-gray-100">2023</h3>
+          <ul class="list-disc pl-6">
+            <li>Publish Whitepaper</li>
+            <li>Initial talks with high-profile investors</li>
+            <li>Pre-sale</li>
+            <li>Provide DHC service demo</li>
+            <li>Inter-Blockchain Compatibility</li>
+            <li>Decentralization expansion</li>
+          </ul>
+        </div>
+        <div
+          class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <h3 class="mb-2 text-xl font-bold text-gray-100">2024</h3>
+          <ul class="list-disc pl-6">
+            <li>
+              Launching essential services for users and service providers
+            </li>
+            <li>Improved security, enhanced security</li>
+            <li>Launching the official DHC ecosystem</li>
+            <li>Community Sale</li>
+            <li>
+              Connect service users and service providers, join service exchange
+              registration.
+            </li>
+            <li>Develop a business platform that connects businesses</li>
+            <li>Launching apps on iOS and Android.</li>
+            <li>Reporting API on Binance, Kucoin...</li>
+            <li>International conferences, global events</li>
+            <li>Cooperate in linking services with partner companies</li>
+            <li>Increasing investment, expanding the market</li>
+          </ul>
+        </div>
+        <div
+          class="rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 p-8 shadow"
+        >
+          <h3 class="mb-2 text-xl font-bold text-gray-100">2025</h3>
+          <ul class="list-disc pl-6">
+            <li>Expand the DHC ecosystem</li>
+            <li>Start ATM, smart card</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="bg-gradient-to-r from-gray-600 to-gray-900 py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-extrabold text-gray-100 sm:text-4xl">
+            Join the DHC Community Today
+          </h2>
+          <p
+            class="mx-auto mt-3 max-w-md text-base text-gray-100 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl"
+          >
+            Don't miss out on the opportunity to connect with top-notch
+            freelancers and get your projects done with ease.
+          </p>
+          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center">
+            <div class="sm:ml-6 sm:flex sm:items-center">
+              <a
+                href="./pre-sales.html"
+                class="rounded bg-gradient-to-r from-blue-600 to-blue-400 px-4 py-2 font-bold text-gray-100 hover:from-pink-500 hover:to-yellow-500 sm:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mr-1 inline h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                Login with MetaMask
+              </a>
+              <a
+                href="./pre-sales.html"
+                class="ml-3 hidden rounded bg-gradient-to-r from-blue-600 to-blue-400 px-4 py-2 font-bold text-gray-100 hover:from-pink-500 hover:to-yellow-500 sm:block"
+                data-target="ecosystems"
+                >Join now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-gray-200 bg-gradient-to-r from-black to-gray-800"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="py-8">
+          <div class="flex flex-col justify-between sm:flex-row">
+            <div class="flex flex-col space-x-6 sm:flex-row">
+              <a href="#" class="sm:hidden"></a>
+              <a href="#home" class="text-gray-500 hover:text-gray-200">Home</a>
+              <a href="#ecosystems" class="text-gray-500 hover:text-gray-200"
+                >Ecosystems</a
+              >
+              <a href="#tokens" class="text-gray-500 hover:text-gray-200"
+                >Tokens</a
+              >
+              <a href="#participators" class="text-gray-500 hover:text-gray-200"
+                >Participators</a
+              >
+              <a href="#roadmap" class="text-gray-500 hover:text-gray-200"
+                >Roadmap</a
+              >
+            </div>
+            <div class="mt-4 space-x-6 sm:ml-auto sm:mt-0">
+              <a href="#" class="sm:hidden"></a>
+              <a href="#" class="text-gray-500 hover:text-gray-200">About Us</a>
+              <a href="#" class="ml-6 text-gray-500 hover:text-gray-200"
+                >Contact Us</a
+              >
+            </div>
+          </div>
+          <div class="mt-4 border-t border-gray-200 pt-4 text-sm text-gray-500">
+            <p>Copyright © 2024 DHC. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <button
+      onclick="scrollToTop()"
+      class="scroll-to-top fixed bottom-4 right-4 hidden rounded-full bg-gray-800 text-white transition duration-300 hover:bg-gray-700 hover:text-gray-200"
+    >
+      <svg
+        class="h-10 w-10 rounded-full lg:h-16 lg:w-16"
+        version="1.1"
+        id="Capa_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 416.979 416.979"
+        xml:space="preserve"
+      >
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color: #aec1ff46; stop-opacity: 1" />
+            <stop
+              offset="100%"
+              style="stop-color: #c1d9ff24; stop-opacity: 1"
+            />
+          </linearGradient>
+        </defs>
+
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <g>
+            <path
+              d="M208.489,416.979c115.146,0,208.49-93.344,208.49-208.489C416.979,93.344,323.635,0,208.489,0S0,93.343,0,208.489 C0,323.635,93.343,416.979,208.489,416.979z M127.24,219.452l68.259-118.21c2.68-4.641,7.632-7.499,12.99-7.499 s10.31,2.858,12.99,7.499l68.258,118.21c2.682,4.642,2.682,10.359,0.002,15c-2.68,4.642-7.631,7.501-12.99,7.501h-33.26v66.282 c0,8.284-6.715,15-15,15h-40c-8.284,0-15-6.716-15-15v-66.282H140.23c-5.359,0-10.312-2.859-12.991-7.501 C124.56,229.812,124.56,224.094,127.24,219.452z"
+              fill="url(#gradient)"
+            ></path>
+          </g>
+        </g>
+      </svg>
+    </button>
+  </body>
+</html>
