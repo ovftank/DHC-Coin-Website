@@ -1,9 +1,17 @@
 {
   "scripts": {
-    "start": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch"
+    "start": "nodemon ./server.js",
+    "build": "npx tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.3",
-    "prettier-plugin-tailwindcss": "^0.5.14"
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "moment-timezone": "^0.5.45",
+    "mongoose": "^8.3.3",
+    "nodemon": "^3.1.0"
   }
 }

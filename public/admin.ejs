@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+    </head>
+
+    <body>
+        <h1>Admin Dashboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Affiliate ID</th>
+                    <th>Balance</th>
+                    <th>Balance Affiliate</th>
+                    <th>Role</th>
+                    <th>Withdrawal Request</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.user_id %></td>
+                    <td><%= user.affiliate_id %></td>
+                    <td><%= user.balance %></td>
+                    <td><%= user.balance_affiliate %></td>
+                    <td><%= user.role %></td>
+                    <td>
+                        <% if (user.withdrawal_request.length > 0) { %>
+                        <% user.withdrawal_request.forEach(request => { %>
+                        <p>Status: <%= request.status %></p>
+                        <p>Amount: <%= request.amount %></p>
+                        <p>Source: <%= request.source %></p>
+                        <p>Created At:
+                            <%= new Date(request.createdAt).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }) %>
+                        </p>
+                        <% if (request.status === "pending") { %>
+                        <form action="/admin/withdraw/<%= user._id %>" method="POST" style="display: inline;">
+                            <input type="hidden" name="requestId" value="<%= request._id %>">
+                            <button type="submit">Accept</button>
+                        </form>
+                        <form action="/admin/reject/<%= user._id %>" method="POST" style="display: inline;">
+                            <input type="hidden" name="requestId" value="<%= request._id %>">
+                            <button type="submit">Reject</button>
+                        </form>
+                        <% } %>
+                        <% }) %>
+                        <% } else { %>
+                        <p></p>
+                        <% } %>
+                    </td>
+                    <td>
+                        <a href="/admin/<%= user._id %>/edit">Edit</a>
+                        <form action="/admin/<%= user._id %>/delete" method="POST">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </body>
+
+</html>
