@@ -24,7 +24,6 @@ app.post("/login", async (req, res) => {
       userData.affiliate_id = user.affiliate_id;
       userData.balance = user.balance;
       userData.balance_affiliate = user.balance_affiliate;
-      userData.role = user.role;
       userData.user_id = user.user_id;
       res.status(200).send(JSON.stringify(userData));
       return;
@@ -34,7 +33,6 @@ app.post("/login", async (req, res) => {
       affiliate_id: database.createAffiliateId(),
       balance: 0,
       balance_affiliate: 0,
-      role: "user",
       user_id: req.body.user_id,
       rate: 0,
     });
@@ -42,7 +40,6 @@ app.post("/login", async (req, res) => {
     userData.affiliate_id = newUser.affiliate_id;
     userData.balance = newUser.balance;
     userData.balance_affiliate = newUser.balance_affiliate;
-    userData.role = newUser.role;
     userData.user_id = newUser.user_id;
     res.status(200).send(JSON.stringify(userData));
     return;

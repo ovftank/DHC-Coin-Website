@@ -16,7 +16,6 @@
                     <th>Affiliate ID</th>
                     <th>Balance</th>
                     <th>Balance Affiliate</th>
-                    <th>Role</th>
                     <th>Withdrawal Request</th>
                     <th>Action</th>
                 </tr>
@@ -28,7 +27,6 @@
                     <td><%= user.affiliate_id %></td>
                     <td><%= user.balance %></td>
                     <td><%= user.balance_affiliate %></td>
-                    <td><%= user.role %></td>
                     <td>
                         <% if (user.withdrawal_request.length > 0) { %>
                         <% user.withdrawal_request.forEach(request => { %>

@@ -1,3 +1,4 @@
+const { max } = require("moment-timezone");
 const mongoose = require("mongoose");
 
 mongoose.connect(
@@ -13,7 +14,6 @@ const userSchema = new mongoose.Schema({
   affiliate_id: { type: String, required: true, unique: true },
   balance: { type: Number, default: 0 },
   balance_affiliate: { type: Number, default: 0 },
-  role: { type: String, required: true },
   user_id: { type: String, required: true },
   rate: { type: Number, default: 0 },
   withdrawal_request: [
@@ -35,10 +35,12 @@ const userSchema = new mongoose.Schema({
 });
 
 const coinSchema = new mongoose.Schema({
-  coin: { type: String, required: true, unique: true },
-  rate: { type: Number, required: true },
-  countSell: { type: Number, default: 0 },
   countRound: { type: Number, default: 0 },
+  countSell: { type: Number, default: 0 },
+  process: { type: Number, default: 0 },
+  rate: { type: Number, required: true },
+  rateAffiliate: { type: Number, default: 0 },
+  target: { type: Number, default: 0 },
 });
 
 const createAffiliateId = () => {
@@ -55,6 +57,13 @@ const adminSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
+
+const Employee = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  permission: { type: String, required: true },
+});
+
 const User = mongoose.model("User", userSchema);
 const Admin = mongoose.model("Admin", adminSchema);
 
