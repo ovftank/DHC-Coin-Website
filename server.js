@@ -15,6 +15,10 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/home", (req, res) => {
+  res.render("home")
+});
+
 app.post("/login", async (req, res) => {
   var userData = {};
   try {
