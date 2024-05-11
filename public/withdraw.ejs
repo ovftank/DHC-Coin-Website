@@ -6,9 +6,7 @@
         <link rel="shortcut icon" href="./image/logo.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
-            integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
         <link rel="stylesheet" href="./css/style.css" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -16,34 +14,10 @@
             document.addEventListener("DOMContentLoaded", () => {
                 const menuButton = document.getElementById("menu-button");
                 const mobileMenu = document.getElementById("mobile-menu");
-                const accountButton = document.getElementById("my-account");
-                const accountMenu = document.getElementById("account-menu");
-                const closeAccountMenu = document.getElementById("close-account-menu");
-                accountButton.addEventListener("click", () => {
-                    accountMenu.classList.remove("hidden");
-                    document
-                        .querySelector("#account-menu-container")
-                        .classList.remove("hidden");
-                    closeAccountMenu.classList.add("fa-xmark");
-                });
-                closeAccountMenu.addEventListener("click", () => {
-                    accountMenu.classList.add("hidden");
-                    document
-                        .querySelector("#account-menu-container")
-                        .classList.remove("hidden");
-                });
-
                 menuButton.addEventListener("click", () => {
                     mobileMenu.classList.toggle("hidden");
-                    if (!mobileMenu.classList.contains("hidden")) {
-                        menuButton.innerHTML = `
-                    <svg class="w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-                    `;
-                    } else {
-                        menuButton.innerHTML = `
-                        <svg class="w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-                        `;
-                    }
+                    menuButton.classList.toggle("fa-bars");
+                    menuButton.classList.toggle("fa-times");
                 });
                 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
                     anchor.addEventListener("click", function (e) {
@@ -74,57 +48,10 @@
     </head>
 
     <body class="overflow-hidden bg-gradient-to-r from-black to-gray-800 text-white">
-        <div id="account-menu" class="relative hidden">
-            <div id="account-menu-container"
-                class="fixed right-0 z-40 h-fit w-full rounded-b-xl bg-gradient-to-b from-indigo-500 to-indigo-400 py-3 pb-6 sm:h-[50vh] sm:w-fit sm:rounded-l-xl sm:rounded-br-none">
-                <div id="close-account-menu"
-                    class="mx-3 flex cursor-pointer select-none justify-end text-right text-white">
-                    <svg class="h-5 w-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                    </svg>
-                </div>
-                <div
-                    class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-coins"></i> DHC Balance: 0 <b>DHC</b>
-                </div>
-                <div
-                    class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-hand-holding-dollar"></i> Affiliate Balance: 0
-                    <b>DHC</b>
-                </div>
-                <div
-                    class="mx-1 inline-flex w-11/12 cursor-pointer select-none items-center rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-clock-rotate-left mr-2"></i> History Payment
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4 fill-white" viewBox="0 0 320 512">
-                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                    </svg>
-                </div>
-                <div
-                    class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-user-plus"></i> Referral Users: <b>1</b>
-                </div>
-                <div
-                    class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-code"></i> Affiliate ID: <b>124</b>
-                </div>
-                <div
-                    class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-gear"></i> Setting
-                </div>
-                <div
-                    class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
-                    <i class="fa-solid fa-repeat"></i> Switch Account
-                </div>
-            </div>
-        </div>
         <span id="circle"
-            class="pointer-events-none fixed z-50 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-solid border-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"></span>
+            class="pointer-events-none fixed z-40 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-solid border-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"></span>
         <span id="dot"
-            class="pointer-events-none fixed z-50 hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"></span>
+            class="pointer-events-none fixed z-40 hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"></span>
         <script>
             var xp = 0,
                 mouseX = 0;
@@ -159,21 +86,18 @@
         </script>
         <header class="flex items-center justify-between bg-[#ffffff05] p-5">
             <div class="hidden h-6 w-80 items-start justify-start gap-10 lg:inline-flex">
-                <a href="#hub"
-                    class="cursor-pointer select-none font-sans text-base font-medium hover:text-indigo-400">DHC HUB</a>
+                <a href="#hub" class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">DHC HUB</a>
                 <a href="#features"
-                    class="cursor-pointer select-none font-sans text-base font-medium hover:text-indigo-400">Explore</a>
+                    class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">Explore</a>
             </div>
             <div id="mobile-menu" class="relative hidden">
                 <div
-                    class="absolute top-10 z-50 flex h-6 w-80 flex-col items-start justify-start gap-10 bg-[#ffffff05]">
-                    <a href="#hub" class="cursor-pointer select-none font-sans text-base font-medium">DHC HUB</a>
-                    <a href="#features" class="cursor-pointer select-none font-sans text-base font-medium">Explore</a>
+                    class="z-50 absolute top-10 flex h-6 w-80 flex-col items-start justify-start gap-10 bg-[#ffffff05]">
+                    <a href="#hub" class="cursor-pointer font-sans text-base font-medium">DHC HUB</a>
+                    <a href="#features" class="cursor-pointer font-sans text-base font-medium">Explore</a>
                 </div>
             </div>
-            <div id="menu-button" class="p-5 lg:hidden">
-                <i class="fa-solid fa-bars fa-lg"></i>
-            </div>
+            <div id="menu-button" class="fa-solid fa-bars fa-lg p-5 lg:hidden"></div>
             <button id="my-account"
                 class="select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400">
                 <i class="fa-solid fa-circle-user mr-2"></i>My account
@@ -182,9 +106,9 @@
         <div class="pointer-events-none relative left-10 top-36 z-0 select-none">
             <img src="./image/IcosaDHC.svg" class="absolute z-0 h-80 w-80 animate-pulse saturate-200" />
         </div>
-        <div class="z-30 my-10 flex flex-col sm:flex-row">
+        <div class="z-40 my-10 flex flex-col sm:flex-row">
             <section data-aos="fade-right" data-aos-duration="500"
-                class="z-30 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#000000fa] to-[#ffffff05] p-5 sm:w-1/2">
+                class="z-40 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#000000fa] to-[#ffffff05] p-5 sm:w-1/2">
                 <div class="font-sans text-xl font-bold tracking-wide text-white">
                     Buy DHC Tokens
                 </div>
@@ -199,54 +123,26 @@
                     amount of token you will receive. The calculator helps to convert
                     required currency to tokens.
                 </div>
-                <div class="mt-3 flex flex-row items-center justify-center sm:flex-row">
+                <div class="mt-3 flex flex-row justify-center items-center sm:flex-row">
                     <div class="flex w-full items-center justify-center">
                         <input type="number" id="amount"
                             class="w-4/5 appearance-none rounded-md rounded-r-none border border-indigo-400 bg-transparent p-3 focus:outline-none"
                             autocomplete="off" />
                         <div
-                            class="flex items-center justify-center rounded rounded-l-none border border-l-0 border-indigo-400 bg-transparent p-3">
+                            class="flex items-center justify-center rounded rounded-l-none border-l-0 border border-indigo-400 bg-transparent p-3">
                             <img class="pointer-events-none mr-2 box-border h-4 max-h-full w-4 max-w-full select-none drop-shadow-[0_0_45px_rgba(99,102,241,0.75)]"
                                 src="./image/tether-usdt-logo.svg" alt="" />USDT
                         </div>
                     </div>
-                    <div class="self-start whitespace-nowrap p-3 sm:self-center">
-                        = <b>10</b> DHC
+                    <div class="self-start whitespace-nowrap sm:self-center p-3">
+                        = 10 <b>DHC</b>
                     </div>
                 </div>
                 <button
                     class="m-3 ml-0 select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400">
                     Make Payment <i class="fa-solid fa-credit-card"></i>
                 </button>
-                <div
-                    class="mb-6 mt-3 flex flex-col justify-between rounded-lg border border-indigo-400 p-3 sm:flex-row sm:px-10">
-                    <div class="flex w-full justify-between">
-                        <div class="flex flex-col items-center">
-                            <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
-                                +0% SALE BONUS
-                            </p>
-                            <b class="text-lg font-bold text-indigo-400">0</b>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
-                                TOKEN PRICE
-                            </p>
-                            <b class="text-lg font-bold text-indigo-300">$0.18 </b>
-                        </div>
-                        <div class="hidden flex-col items-center sm:flex">
-                            <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
-                                TOTAL DHC
-                            </p>
-                            <b class="text-lg font-bold text-indigo-300">0</b>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center sm:hidden">
-                        <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
-                            TOTAL DHC
-                        </p>
-                        <b class="text-lg font-bold text-indigo-300">0</b>
-                    </div>
-                </div>
+                <div>Balance token: 10 + 10 = 20 DHC</div>
                 <hr class="my-3 border-indigo-400" />
                 <div class="font-sans text-sm font-normal tracking-tight text-gray-300">
                     <i class="fa-solid fa-circle-info text-indigo-500"></i> Tokens will
@@ -255,74 +151,62 @@
                 </div>
             </section>
             <section data-aos="fade-left" data-aos-duration="500"
-                class="z-30 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#0000002e] via-[#000000db] to-[#ffffff05] p-5 pb-0 sm:w-1/2">
-                <div class="z-30 text-center font-sans text-xl font-bold tracking-wide text-white">
+                class="z-40 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#0000002e] via-[#000000db] to-[#ffffff05] p-5 pb-0 sm:w-1/2">
+                <div class="z-40 text-center font-sans text-xl font-bold tracking-wide text-white">
                     TOKEN SALES PROGRESS
                 </div>
-                <div class="h-full flex flex-col justify-beetween">
-                    <div class="hidden sm:block py-6">
-                        <p class="font-sans text-sm font-normal tracking-tight text-gray-300">Explore the dynamic
-                            evolution of DHC token sales as we embark on a journey towards innovation and
-                            growth. From our fundraising milestones to the current round and future targets, join us in
-                            shaping the future of cryptocurrency.</p>
+                <div class="flex h-full flex-col items-center justify-center">
+                    <div class="m-3 flex w-full justify-between">
+                        <div class="whitespace-nowrap p-3 sm:flex">
+                            Raised
+                            <p class="hidden sm:block">-</p>
+                            <br class="block sm:hidden" /><b class="font-bold">45 DHC</b>
+                        </div>
+                        <div class="whitespace-nowrap p-3 sm:flex">
+                            Target
+                            <p class="hidden sm:block">-</p>
+                            <br class="block sm:hidden" /><b class="font-bold">100 DHC</b>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="m-3 flex w-full justify-between">
-                            <div class="whitespace-nowrap p-3 sm:flex">
-                                Raised
-                                <p class="hidden sm:block">-</p>
-                                <br class="block sm:hidden" /><b class="font-bold">45 DHC</b>
-                            </div>
-                            <div class="whitespace-nowrap p-3 sm:flex">
-                                Target
-                                <p class="hidden sm:block">-</p>
-                                <br class="block sm:hidden" /><b class="font-bold">100 DHC</b>
-                            </div>
+                    <div class="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                        <div class="relative flex h-2.5 w-[25%] items-center justify-end">
+                            <div class="absolute z-30 h-7 border border-white"></div>
                         </div>
-                        <div class="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-                            <div class="relative flex h-2.5 w-[25%] items-center justify-end">
-                                <div class="absolute z-30 h-7 border border-white"></div>
-                            </div>
-                            <div class="relative flex h-2.5 w-[50%] items-center justify-end">
-                                <div class="absolute -top-4 z-30 h-7 border border-white"></div>
-                            </div>
-                            <div class="relative flex h-2.5 w-[75%] items-center justify-end">
-                                <div class="absolute -top-6 z-30 h-7 border border-white"></div>
-                            </div>
-                            <div
-                                class="relative -top-[30px] flex h-2.5 w-[45%] items-center justify-end rounded-full bg-indigo-500">
-                                <div class="absolute h-5 w-5 rounded-[50%] border-2 border-white bg-indigo-500"></div>
-                            </div>
-                            <div class="flex w-full">
-                                <div class="w-[25%] text-right text-sm sm:text-lg">SOFT</div>
-                                <div class="w-[15%] text-left text-sm sm:text-lg">CAP</div>
-                                <div class="w-[10%] text-right text-sm sm:text-lg">CROWD</div>
-                                <div class="w-[10%] text-left text-sm sm:text-lg">
-                                    <br class="block sm:hidden" />SALE
-                                </div>
-                                <div class="w-[15%] text-right text-sm sm:text-lg">HARD</div>
-                                <div class="w-[25%] text-left text-sm sm:text-lg">CAP</div>
-                            </div>
+                        <div class="relative flex h-2.5 w-[50%] items-center justify-end">
+                            <div class="absolute -top-4 z-30 h-7 border border-white"></div>
                         </div>
-                        <hr class="my-3 opacity-0" />
+                        <div class="relative flex h-2.5 w-[75%] items-center justify-end">
+                            <div class="absolute -top-6 z-30 h-7 border border-white"></div>
+                        </div>
                         <div
-                            class="mt-20 flex w-full justify-center border-indigo-400 sm:rounded-l-lg sm:rounded-r-lg sm:border-b sm:border-l sm:border-r sm:border-t">
-                            <div
-                                class="flex items-center justify-center border-r border-t border-indigo-400 sm:border-t-0">
-                                <div class="whitespace-nowrap p-8 pr-0 text-sm font-normal">
-                                    <b class="text-xl">$0.18</b> <br />
-                                    Current Round
-                                </div>
-                                <div
-                                    class="inline-block max-h-6 max-w-fit -rotate-90 transform rounded bg-indigo-500 px-2">
-                                    <b>Now</b>
-                                </div>
+                            class="relative -top-[30px] flex h-2.5 w-[45%] items-center justify-end rounded-full bg-indigo-500">
+                            <div class="absolute h-5 w-5 rounded-[50%] border-2 border-white bg-indigo-500"></div>
+                        </div>
+                        <div class="flex w-full">
+                            <div class="w-[25%] text-right text-sm sm:text-lg">SOFT</div>
+                            <div class="w-[15%] text-left text-sm sm:text-lg">CAP</div>
+                            <div class="w-[10%] text-right text-sm sm:text-lg">CROWD</div>
+                            <div class="w-[10%] text-left text-sm sm:text-lg">
+                                <br class="block sm:hidden" />SALE
                             </div>
-                            <div
-                                class="whitespace-nowrap border-t border-indigo-400 p-8 text-sm font-normal sm:border-t-0">
-                                <b class="text-xl">$0.19</b> <br />
-                                Next Round
+                            <div class="w-[15%] text-right text-sm sm:text-lg">HARD</div>
+                            <div class="w-[25%] text-left text-sm sm:text-lg">CAP</div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-20 flex justify-center w-full sm:border-b sm:border-l sm:border-t sm:rounded-r-lg sm:border-r sm:rounded-l-lg border-indigo-400">
+                        <div class="flex items-center justify-center border-r border-t border-indigo-400 sm:border-t-0">
+                            <div class="whitespace-nowrap p-8 pr-0 text-sm font-normal">
+                                <b class="text-xl">$0.18</b> <br />
+                                Current Round
                             </div>
+                            <div class="inline-block max-h-6 max-w-fit -rotate-90 transform rounded bg-indigo-500 px-2">
+                                <b>Now</b>
+                            </div>
+                        </div>
+                        <div class="whitespace-nowrap border-t border-indigo-400 p-8 text-sm font-normal sm:border-t-0">
+                            <b class="text-xl">$0.19</b> <br />
+                            Next Round
                         </div>
                     </div>
                 </div>
@@ -338,23 +222,23 @@
                     class="absolute z-0 saturate-200 lg:-top-20 lg:left-96 lg:h-96 lg:w-96" alt="" />
             </div>
 
-            <div data-aos="fade-up" class="z-30 flex flex-col items-center justify-center">
+            <div data-aos="fade-up" class="z-40 flex flex-col items-center justify-center">
                 <div data-aos="fade-up" class="flex max-w-md flex-col items-center justify-center">
-                    <a class="text-white/opacity-60 z-30 mb-5 font-sans text-sm font-medium tracking-widest"
+                    <a class="text-white/opacity-60 z-40 mb-5 font-sans text-sm font-medium tracking-widest"
                         href="#">ENTER THE DHC HUB</a>
                     <div data-aos="fade-up"
-                        class="z-30 whitespace-nowrap bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:text-5xl">
+                        class="z-40 whitespace-nowrap bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:text-5xl">
                         The Heart of the <br />
                         Interchain.
                     </div>
-                    <div class="z-30 mb-5 text-center font-sans text-sm font-medium tracking-widest text-white">
+                    <div class="z-40 mb-5 text-center font-sans text-sm font-medium tracking-widest text-white">
                         Serving as the economic center of DHC, the DHC Hub is a blockchain
                         that provides vital services to the Interchain
                     </div>
                 </div>
             </div>
-            <div class="z-30 flex w-full flex-col content-center items-center justify-center">
-                <div class="z-30 grid grid-cols-1 sm:block sm:grid-cols-2">
+            <div class="z-40 flex w-full flex-col content-center items-center justify-center">
+                <div class="z-40 grid grid-cols-1 sm:block sm:grid-cols-2">
                     <div class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96">
                         <div data-aos="fade-right" class="pointer-events-none h-60 w-60 select-none">
                             <img class="h-60 w-60" src="./image/market.png" />
@@ -427,7 +311,7 @@
                     </div>
                 </div>
                 <a target="_blank" href="https://t.me/dhccoin" data-aos="fade-up"
-                    class="cursor-pointer mt-14 select-none rounded-lg bg-indigo-500 px-10 py-4 font-sans text-lg font-medium hover:bg-indigo-400 focus:bg-indigo-400">
+                    class="mt-14 select-none rounded-lg bg-indigo-500 px-10 py-4 font-sans text-lg font-medium hover:bg-indigo-400 focus:bg-indigo-400">
                     Connect to DHC HUB <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -448,7 +332,7 @@
             </div>
         </section>
         <button onclick="scrollToTop()" id="scrollBtn"
-            class="fixed bottom-2 right-2 z-30 hidden h-12 w-12 rounded-[50%] border-0 bg-indigo-500 text-white hover:bg-indigo-400 sm:bottom-5 sm:right-5">
+            class="fixed bottom-2 right-2 z-40 hidden h-12 w-12 rounded-[50%] border-0 bg-indigo-500 text-white hover:bg-indigo-400 sm:bottom-5 sm:right-5">
             <i class="fa-solid fa-caret-up"></i>
         </button>
         <footer class="mt-10 bg-[#ffffff05] py-8 text-white">
