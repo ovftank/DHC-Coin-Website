@@ -1,0 +1,364 @@
+<!doctype html>
+<html class="touch-pan-y overflow-x-hidden scroll-smooth">
+  <head>
+    <title>DHC Coin - The Internet of Blockchain</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='') }}image/logo.png"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='') }}css/style.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuButton = document.getElementById("menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const accountButton = document.getElementById("my-account");
+        const accountMenu = document.getElementById("account-menu");
+        const closeAccountMenu = document.getElementById("close-account-menu");
+        accountButton.addEventListener("click", () => {
+          accountMenu.classList.remove("hidden");
+          document
+            .querySelector("#account-menu-container")
+            .classList.remove("hidden");
+        });
+        closeAccountMenu.addEventListener("click", () => {
+          accountMenu.classList.add("hidden");
+          document
+            .querySelector("#account-menu-container")
+            .classList.remove("hidden");
+        });
+        menuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          menuButton.classList.toggle("fa-bars");
+          menuButton.classList.toggle("fa-times");
+        });
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+      window.onscroll = () => {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          document.getElementById("scrollBtn").classList.remove("hidden");
+        } else {
+          document.getElementById("scrollBtn").classList.add("hidden");
+        }
+      };
+
+      function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+  </head>
+
+  <body
+    class="overflow-hidden bg-gradient-to-r from-black to-gray-800 text-white"
+  >
+    <div id="account-menu" class="relative hidden">
+      <div
+        id="account-menu-container"
+        class="fixed right-0 z-40 h-fit w-full rounded-b-xl bg-gradient-to-b from-indigo-500 to-indigo-400 py-3 pb-6 sm:h-[50vh] sm:w-fit sm:rounded-l-xl sm:rounded-br-none"
+      >
+        <div
+          id="close-account-menu"
+          class="mx-3 flex cursor-pointer select-none justify-end text-right text-white"
+        >
+          <svg
+            class="h-5 w-5 fill-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            />
+          </svg>
+        </div>
+        <div
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-coins"></i> DHC Balance: <b id="balance">DHC</b>
+        </div>
+        <div
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-hand-holding-dollar"></i> Affiliate Balance: 0
+          <b>DHC</b>
+        </div>
+        <a
+          href="{{ url_for("history") }}"
+          class="mx-1 inline-flex w-11/12 cursor-pointer select-none items-center rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-clock-rotate-left mr-2"></i> History Payment
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="ml-2 h-4 w-4 fill-white"
+            viewBox="0 0 320 512"
+          >
+            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+            />
+          </svg>
+        </a>
+        <div
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-user-plus"></i> Referral Users: <b>0</b>
+        </div>
+        <div
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-code"></i> Affiliate ID: <b>124</b>
+        </div>
+        <div
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-serif text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-gear"></i> Setting
+        </div>
+        <div
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          <i class="fa-solid fa-repeat"></i> Switch Account
+        </div>
+      </div>
+    </div>
+    <span
+      id="circle"
+      class="pointer-events-none fixed z-50 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-solid border-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"
+    ></span>
+    <span
+      id="dot"
+      class="pointer-events-none fixed z-50 hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"
+    ></span>
+    <script>
+      var xp = 0,
+        mouseX = 0;
+      var yp = 0,
+        mouseY = 0;
+      var xpDot = 0,
+        mouseX = 0;
+      var ypDot = 0,
+        mouseY = 0;
+      const cursorFollower = document.querySelector("#circle");
+      const cursorFollowerDot = document.querySelector("#dot");
+
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      setInterval(function () {
+        xp += (mouseX - xp) / 15;
+        yp += (mouseY - yp) / 15;
+        cursorFollower.style.left = xp + "px";
+        cursorFollower.style.top = yp + "px";
+      }, 10);
+
+      setInterval(function () {
+        xpDot += (mouseX - xpDot) / 25;
+        ypDot += (mouseY - ypDot) / 25;
+
+        cursorFollowerDot.style.left = xpDot + "px";
+        cursorFollowerDot.style.top = ypDot + "px";
+      }, 10);
+    </script>
+    <header class="flex items-center justify-between bg-[#ffffff05] p-5">
+      <div
+        class="hidden h-6 w-80 items-start justify-start gap-10 lg:inline-flex"
+      >
+        <a
+          href="#hub"
+          class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400"
+          >HOME</a
+        >
+        <a
+          href="#hub"
+          class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400"
+          >DHC HUB</a
+        >
+        <a
+          href="#features"
+          class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400"
+          >Explore</a
+        >
+      </div>
+      <div id="mobile-menu" class="relative hidden">
+        <div
+          class="absolute top-10 z-50 flex h-6 w-80 flex-col items-start justify-start gap-10 bg-[#ffffff05]"
+        >
+          <a href="#hub" class="cursor-pointer font-sans text-base font-medium"
+            >DHC HUB</a
+          >
+          <a
+            href="#features"
+            class="cursor-pointer font-sans text-base font-medium"
+            >Explore</a
+          >
+        </div>
+      </div>
+      <div id="menu-button" class="fa-solid fa-bars fa-lg p-5 lg:hidden"></div>
+      <button
+        id="my-account"
+        class="select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400"
+      >
+        <i class="fa-solid fa-circle-user mr-2"></i>My account
+      </button>
+    </header>
+    <div class="pointer-events-none relative left-10 top-24 z-0 select-none">
+      <img
+        src="{{ url_for('static', filename='') }}image/IcosaDHC.svg"
+        class="absolute z-0 h-80 w-80 animate-pulse saturate-200"
+      />
+    </div>
+    <h1 class="z-30 text-center text-3xl font-semibold">Setting</h1>
+    <section
+      class="relative z-30 m-5 flex flex-col justify-between rounded-lg border border-indigo-400 bg-gradient-to-r from-[#000000fa] to-[#ffffff05] p-5 shadow-sm shadow-indigo-300"
+    >
+      <div class="z-30 flex flex-col gap-5">
+        <div class="flex w-full items-center">
+          <label
+            for="email"
+            class="z-30 hidden w-1/6 rounded-lg rounded-r-none border border-r-0 border-indigo-400 p-3 text-center font-semibold sm:block"
+            >Email:</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="z-30 w-full appearance-none rounded-lg border border-indigo-400 bg-transparent p-3 focus:outline-none sm:rounded-l-none"
+            placeholder="Enter Your Email"
+          />
+        </div>
+        <div class="z-30 flex w-full items-center">
+          <label
+            for="metamask_address"
+            class="z-30 hidden w-1/6 whitespace-nowrap rounded-lg rounded-r-none border border-r-0 border-indigo-400 p-3 text-center font-semibold sm:block"
+            >Metamask</label
+          >
+          <input
+            type="text"
+            id="metamask_address"
+            class="z-30 w-full appearance-none rounded-lg border border-indigo-400 bg-transparent p-3 focus:outline-none sm:rounded-l-none"
+            placeholder="Default MetaMask Address"
+          />
+        </div>
+        <button
+          class="rounded-lg bg-indigo-500 p-3 font-sans text-sm font-bold hover:bg-indigo-400 focus:bg-indigo-400"
+        >
+          Save
+        </button>
+        <button
+          class="rounded-lg bg-red-500 p-3 font-sans text-sm font-bold hover:bg-red-400 focus:bg-red-400"
+        >
+          Delete Account
+        </button>
+      </div>
+    </section>
+    <section
+      class="fixed left-0 top-0 z-40 flex h-full w-full items-center justify-center bg-[#00000099] text-white"
+    >
+      <div
+        class="w-11/12 rounded-lg border border-indigo-400 bg-gradient-to-r from-[#00000099] to-gray-800 px-5 py-10 sm:w-1/2"
+      >
+        <div class="flex items-baseline justify-start gap-3">
+          <i class="fa-solid fa-trash-can text-red-500"></i>
+          <b class="text-xl">Delete Account</b>
+        </div>
+        <div class="m-5 font-sans text-sm">
+          <p class="text-lg">Are you sure you want to delete your account?</p>
+          <div class="inline-flex items-baseline gap-3">
+            <input class="rounded-lg" type="checkbox" name="" id="" />
+            <p>
+              I understand that this action cannot be undone and I will lose all
+              data associated with my account.
+            </p>
+          </div>
+        </div>
+        <div>
+          <button
+            class="rounded-lg bg-red-500 p-2 font-sans text-sm font-bold text-white hover:bg-red-400 focus:bg-red-400"
+          >
+            Delete
+          </button>
+          <button
+            class="rounded-lg bg-gray-400 p-2 font-sans text-sm font-bold text-black hover:bg-gray-100 focus:bg-gray-100"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </section>
+    <button
+      onclick="scrollToTop()"
+      id="scrollBtn"
+      class="fixed bottom-2 right-2 z-40 hidden h-12 w-12 rounded-[50%] border-0 bg-indigo-500 text-white hover:bg-indigo-400 sm:bottom-5 sm:right-5"
+    >
+      <i class="fa-solid fa-caret-up"></i>
+    </button>
+    <footer class="mt-10 bg-[#ffffff05] py-8 text-white">
+      <div class="container mx-auto flex items-center justify-center px-4">
+        <div class="flex w-full flex-col">
+          <h3 class="mb-4 text-xl font-bold md:text-center">
+            Contact Information
+          </h3>
+          <div
+            class="flex flex-col items-start justify-center gap-4 md:flex-row md:items-center"
+          >
+            <a class="mb-2" target="_blank" href="https://t.me/dhccoin">
+              <i class="fa-brands fa-telegram mr-2 text-indigo-500"></i
+              >t.me/dhccoin
+            </a>
+            <a
+              class="mb-2"
+              target="_blank"
+              href="mailto:contact&#64;dhccoin.com"
+            >
+              <i class="fas fa-envelope mr-2 text-indigo-500"></i
+              >contact&#64;dhccoin.com
+            </a>
+            <a class="mb-2" href="https://www.dhccoin.com">
+              <i class="fas fa-globe mr-2 text-indigo-500"></i>www.dhccoin.com
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container pointer-events-none mx-auto mt-5 select-none px-4 lg:mt-5"
+      >
+        <div class="flex items-center justify-center">
+          <div
+            class="text-white/opacity-60 font-sans text-sm font-medium tracking-widest"
+          >
+            <p class="text-sm">&copy; 2024 DHC Coin. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      AOS.init({
+        startEvent: "DOMContentLoaded",
+        duration: 500,
+        easing: "ease-in-out",
+      });
+    </script>
+  </body>
+</html>
