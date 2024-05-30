@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import datetime
+from math import ceil, floor
 
 from flask import Flask, jsonify, render_template, request
 
@@ -85,6 +86,14 @@ def format_number(value):
     return "{:,.0f}".format(value).replace(",", ".")
 
 
+@app.template_filter('round_number')
+def round_number_filter(number):
+    if number - floor(number) >= 0.5:
+        return ceil(number)
+    else:
+        return floor(number)
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -130,19 +139,23 @@ def buy():
             add_customer(customer_id, amount)
         else:
             balance = get_balance(customer_id)
-            new_balance = balance + amount
             conn = get_connection()
             c = conn.cursor()
+            tokenPrice = c.execute(
+                "SELECT token_price FROM coin").fetchone()[0]
+            amount = amount * tokenPrice
+            new_balance = balance + amount
             c.execute("UPDATE customers SET balance = ? WHERE id = ?",
                       (new_balance, customer_id))
             conn.commit()
             conn.close()
         add_transaction(customer_id, amount)
 
+        amount = round(amount, 2)
+        amount = "{:.2f}".format(amount)
         conn = get_connection()
         c = conn.cursor()
-        c.execute("UPDATE coin SET raised = raised + ?",
-                  (amount))
+        c.execute("UPDATE coin SET raised = raised + ?", (amount,))
         conn.commit()
         conn.close()
 

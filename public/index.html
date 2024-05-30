@@ -139,14 +139,14 @@
     <header class="flex items-center justify-between bg-[#ffffff05] p-5">
       <div class="hidden h-6 w-80 items-start justify-start gap-10 lg:inline-flex">
         <a href="#services" class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">Services</a>
-        <a href="#hub" class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">DHC HUB</a>
-        <a href="#features" class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">Explore</a>
+        <a href="{{ url_for('login') }}" class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">DHC HUB</a>
+        <a href="{{ url_for('login') }}" class="cursor-pointer font-sans text-base font-medium hover:text-indigo-400">Explore</a>
       </div>
       <div id="mobile-menu" class="relative hidden">
         <div class="z-40 absolute top-10 flex h-6 w-80 flex-col items-start justify-start gap-10 bg-[#ffffff05]">
           <a href="#services" class="cursor-pointer font-sans text-base font-medium">Services</a>
-          <a href="#hub" class="cursor-pointer font-sans text-base font-medium">DHC HUB</a>
-          <a href="#features" class="cursor-pointer font-sans text-base font-medium">Explore</a>
+          <a href="{{ url_for('login') }}" class="cursor-pointer font-sans text-base font-medium">DHC HUB</a>
+          <a href="{{ url_for('login') }}" class="cursor-pointer font-sans text-base font-medium">Explore</a>
         </div>
       </div>
       <div id="menu-button" class="fa-solid fa-bars fa-lg p-5 lg:hidden"></div>
@@ -197,7 +197,7 @@
             Universe of Interconnected Services, Where Limitless Opportunities
             Await.
           </div>
-          <a _target="_blank" href="https://t.me/dhccoin" data-aos="fade-right"
+          <a _target="_blank" href="{{ url_for('login') }}" data-aos="fade-right"
             class="cursor-pointer mt-5 select-none self-center justify-self-center rounded-lg bg-indigo-500 px-10 py-4 text-center font-sans text-lg font-medium hover:bg-indigo-400 focus:bg-indigo-400">
             Learn more <i class="fa-solid fa-arrow-right"></i>
           </a>
@@ -239,7 +239,7 @@
 
       <div data-aos="fade-up" class="z-40 flex flex-col items-center justify-center">
         <div data-aos="fade-up" class="flex max-w-md flex-col items-center justify-center">
-          <a class="text-white/opacity-60 z-40 mb-5 font-sans text-sm font-medium tracking-widest" href="#">ENTER THE
+          <a class="text-white/opacity-60 z-40 mb-5 font-sans text-sm font-medium tracking-widest" href="{{ url_for('login') }}">ENTER THE
             DHC HUB</a>
           <div data-aos="fade-up"
             class="z-40 whitespace-nowrap bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:text-5xl">
@@ -319,7 +319,7 @@
             </div>
           </div>
         </div>
-        <a target="_blank" href="https://t.me/dhccoin" data-aos="fade-up"
+        <a target="_blank" href="{{ url_for('login') }}" data-aos="fade-up"
           class="cursor-pointer mt-14 select-none rounded-lg bg-indigo-500 px-10 py-4 font-sans text-lg font-medium hover:bg-indigo-400 focus:bg-indigo-400">
           Connect to DHC HUB <i class="fa-solid fa-arrow-right"></i>
         </a>
