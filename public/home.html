@@ -1,18 +1,34 @@
 <!doctype html>
 <html class="touch-pan-y overflow-x-hidden scroll-smooth">
-
   <head>
     <title>DHC Coin - The Internet of Blockchain</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='') }}image/logo.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='') }}image/logo.png"
+      type="image/x-icon"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
       integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='') }}css/style.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='') }}css/style.css"
+    />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -86,6 +102,15 @@
               totalElement.textContent = totalAmount;
             }
           }
+          const showWarning = () => {
+            const amount = document.getElementById("amount").value;
+            if (amount >= 200) {
+              document.getElementById("warning").classList.add("hidden");
+            } else {
+              document.getElementById("warning").classList.remove("hidden");
+            }
+          };
+          showWarning();
         });
       });
 
@@ -96,58 +121,88 @@
     </script>
   </head>
 
-  <body class="overflow-hidden bg-gradient-to-r from-black to-gray-800 text-white">
+  <body
+    class="overflow-hidden bg-gradient-to-r from-black to-gray-800 text-white"
+  >
     <div id="account-menu" class="relative hidden">
-      <div id="account-menu-container"
-        class="fixed right-0 z-40 h-fit w-full rounded-b-xl bg-gradient-to-b from-indigo-500 to-indigo-400 py-3 pb-6 sm:h-[50vh] sm:w-fit sm:rounded-l-xl sm:rounded-br-none">
-        <div id="close-account-menu" class="mx-3 flex cursor-pointer select-none justify-end text-right text-white">
-          <svg class="h-5 w-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <div
+        id="account-menu-container"
+        class="fixed right-0 z-40 h-fit w-full rounded-b-xl bg-gradient-to-b from-indigo-500 to-indigo-400 py-3 pb-6 sm:h-[50vh] sm:w-fit sm:rounded-l-xl sm:rounded-br-none"
+      >
+        <div
+          id="close-account-menu"
+          class="mx-3 flex cursor-pointer select-none justify-end text-right text-white"
+        >
+          <svg
+            class="h-5 w-5 fill-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
             <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
             <path
-              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            />
           </svg>
         </div>
         <div
-          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-coins"></i> DHC Balance: <b id="balance"></b>
           <b>DHC</b>
         </div>
         <div
-          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-hand-holding-dollar"></i> Affiliate Balance: 0
           <b>DHC</b>
         </div>
-        <a href="{{ url_for("history") }}"
-          class="mx-1 inline-flex w-11/12 cursor-pointer select-none items-center rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+        <a
+          href="{{ url_for("history") }}"
+          class="mx-1 inline-flex w-11/12 cursor-pointer select-none items-center rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-clock-rotate-left mr-2"></i> History Payment
-          <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4 fill-white" viewBox="0 0 320 512">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="ml-2 h-4 w-4 fill-white"
+            viewBox="0 0 320 512"
+          >
             <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
             <path
-              d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+              d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+            />
           </svg>
         </a>
         <div
-          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-user-plus"></i> Referral Users: <b>0</b>
         </div>
         <div
-          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-code"></i> Affiliate ID: <b>0</b>
         </div>
-        <a href="{{ url_for("setting") }}"
-          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+        <a
+          href="{{ url_for("setting") }}"
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-gear"></i> Setting
         </a>
         <div
-          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400">
+          class="mx-1 cursor-pointer select-none rounded-lg px-3 font-sans text-base text-white hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           <i class="fa-solid fa-repeat"></i> Switch Account
         </div>
       </div>
     </div>
-    <span id="circle"
-      class="pointer-events-none fixed z-50 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-solid border-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"></span>
-    <span id="dot"
-      class="pointer-events-none fixed z-50 hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"></span>
+    <span
+      id="circle"
+      class="pointer-events-none fixed z-50 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-solid border-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"
+    ></span>
+    <span
+      id="dot"
+      class="pointer-events-none fixed z-50 hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-indigo-500 mix-blend-difference transition-transform duration-300 sm:block"
+    ></span>
     <script>
       var xp = 0,
         mouseX = 0;
@@ -181,33 +236,58 @@
       }, 10);
     </script>
     <header class="flex items-center justify-between bg-[#ffffff05] p-5">
-      <div class="hidden h-6 w-80 items-start justify-start gap-10 lg:inline-flex">
-        <a href="/#hub" class="cursor-pointer select-none font-sans text-base font-medium hover:text-indigo-400">DHC
-          HUB</a>
-        <a href="/#features"
-          class="cursor-pointer select-none font-sans text-base font-medium hover:text-indigo-400">Explore</a>
+      <div
+        class="hidden h-6 w-80 items-start justify-start gap-10 lg:inline-flex"
+      >
+        <a
+          href="/#hub"
+          class="cursor-pointer select-none font-sans text-base font-medium hover:text-indigo-400"
+          >DHC HUB</a
+        >
+        <a
+          href="/#features"
+          class="cursor-pointer select-none font-sans text-base font-medium hover:text-indigo-400"
+          >Explore</a
+        >
       </div>
       <div id="mobile-menu" class="relative hidden">
-        <div class="absolute top-10 z-50 flex h-6 w-80 flex-col items-start justify-start gap-10 bg-[#ffffff05]">
-          <a href="/#hub" class="cursor-pointer select-none font-sans text-base font-medium">DHC HUB</a>
-          <a href="/#features" class="cursor-pointer select-none font-sans text-base font-medium">Explore</a>
+        <div
+          class="absolute top-10 z-50 flex h-6 w-80 flex-col items-start justify-start gap-10 bg-[#ffffff05]"
+        >
+          <a
+            href="/#hub"
+            class="cursor-pointer select-none font-sans text-base font-medium"
+            >DHC HUB</a
+          >
+          <a
+            href="/#features"
+            class="cursor-pointer select-none font-sans text-base font-medium"
+            >Explore</a
+          >
         </div>
       </div>
       <div id="menu-button" class="p-5 lg:hidden">
         <i class="fa-solid fa-bars fa-lg"></i>
       </div>
-      <button id="my-account"
-        class="select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400">
+      <button
+        id="my-account"
+        class="select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400"
+      >
         <i class="fa-solid fa-circle-user mr-2"></i>My account
       </button>
     </header>
     <div class="pointer-events-none relative left-10 top-36 z-0 select-none">
-      <img src="{{ url_for('static', filename='') }}image/IcosaDHC.svg"
-        class="absolute z-0 h-80 w-80 animate-pulse saturate-200" />
+      <img
+        src="{{ url_for('static', filename='') }}image/IcosaDHC.svg"
+        class="absolute z-0 h-80 w-80 animate-pulse saturate-200"
+      />
     </div>
     <div class="z-30 my-10 flex flex-col sm:flex-row">
-      <section data-aos="fade-right" data-aos-duration="500"
-        class="z-30 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#000000fa] to-[#ffffff05] p-5 sm:w-1/2">
+      <section
+        data-aos="fade-right"
+        data-aos-duration="500"
+        class="z-30 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#000000fa] to-[#ffffff05] p-5 sm:w-1/2"
+      >
         <div class="font-sans text-xl font-bold tracking-wide text-white">
           Buy DHC Tokens
         </div>
@@ -224,53 +304,79 @@
         </div>
         <div class="mt-3 flex flex-row items-center justify-center sm:flex-row">
           <div class="flex w-full items-center justify-center">
-            <input type="number" id="amount"
+            <input
+              type="number"
+              id="amount"
               class="w-4/5 appearance-none rounded-md rounded-r-none border border-indigo-400 bg-transparent p-3 focus:outline-none"
-              autocomplete="off" />
+              autocomplete="off"
+            />
             <div
-              class="flex items-center justify-center rounded rounded-l-none border border-l-0 border-indigo-400 bg-transparent p-3">
+              class="flex items-center justify-center rounded rounded-l-none border border-l-0 border-indigo-400 bg-transparent p-3"
+            >
               <img
                 class="pointer-events-none mr-2 box-border h-4 max-h-full w-4 max-w-full select-none drop-shadow-[0_0_45px_rgba(99,102,241,0.75)]"
-                src="{{ url_for('static', filename='') }}image/tether-usdt-logo.svg" alt="" />USDT
+                src="{{ url_for('static', filename='') }}image/tether-usdt-logo.svg"
+                alt=""
+              />USDT
             </div>
           </div>
           <div class="self-start whitespace-nowrap p-3 sm:self-center">
             = <b id="token-amount">0.00</b> DHC
           </div>
         </div>
-        <button id="make-payment"
-          class="m-3 ml-0 select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400">
+        <button
+          id="make-payment"
+          class="m-3 ml-0 select-none rounded-lg bg-indigo-500 p-3 font-sans text-sm font-medium hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           Make Payment <i class="fa-solid fa-credit-card"></i>
         </button>
         <div
-          class="mb-6 mt-3 flex flex-col justify-between rounded-lg border border-indigo-400 p-3 sm:flex-row sm:px-10">
+          class="mb-6 mt-3 flex flex-col justify-between rounded-lg border border-indigo-400 p-3 sm:flex-row sm:px-10"
+        >
           <div class="flex w-full justify-between">
             <div class="flex flex-col items-center">
-              <p class="sale-bonus whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
+              <p
+                class="sale-bonus whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300"
+              >
                 +{{ saleBonus }}% SALE BONUS
               </p>
-              <b id="sale-bonus" class="text-lg font-bold text-indigo-400">{{ saleBonus }}</b>
+              <b id="sale-bonus" class="text-lg font-bold text-indigo-400"
+                >{{ saleBonus }}</b
+              >
             </div>
             <div class="flex flex-col items-center">
-              <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
+              <p
+                class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300"
+              >
                 TOKEN PRICE
               </p>
-              <b id="token-price" class="text-lg font-bold text-indigo-300">${{ tokenPrice }}
+              <b id="token-price" class="text-lg font-bold text-indigo-300"
+                >${{ tokenPrice }}
               </b>
             </div>
             <div class="hidden flex-col items-center sm:flex">
-              <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
+              <p
+                class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300"
+              >
                 TOTAL DHC
               </p>
               <b id="total" class="text-lg font-bold text-indigo-300">0</b>
             </div>
           </div>
           <div class="flex flex-col items-center sm:hidden">
-            <p class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300">
+            <p
+              class="whitespace-nowrap font-sans text-sm font-normal tracking-tight text-gray-300"
+            >
               TOTAL DHC
             </p>
             <b class="text-lg font-bold text-indigo-300">0</b>
           </div>
+        </div>
+        <div id="warning" class="flex items-center gap-1">
+          <span
+            class="flex h-4 w-4 select-none items-center justify-center rounded-full bg-red-500 font-bold text-white"
+            >x</span
+          >200 USDT minimum contribution require.
         </div>
         <hr class="my-3 border-indigo-400" />
         <div class="font-sans text-sm font-normal tracking-tight text-gray-300">
@@ -279,14 +385,21 @@
           that, DHC tokens will be distributed after the end of Pre-sale.
         </div>
       </section>
-      <section data-aos="fade-left" data-aos-duration="500"
-        class="z-30 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#0000002e] via-[#000000db] to-[#ffffff05] p-5 pb-0 sm:w-1/2">
-        <div class="z-30 text-center font-sans text-xl font-bold tracking-wide text-white">
+      <section
+        data-aos="fade-left"
+        data-aos-duration="500"
+        class="z-30 m-5 flex-grow rounded-lg border border-indigo-400 bg-gradient-to-r from-[#0000002e] via-[#000000db] to-[#ffffff05] p-5 pb-0 sm:w-1/2"
+      >
+        <div
+          class="z-30 text-center font-sans text-xl font-bold tracking-wide text-white"
+        >
           TOKEN SALES PROGRESS
         </div>
         <div class="justify-beetween flex h-full flex-col">
           <div class="hidden py-6 sm:block">
-            <p class="font-sans text-sm font-normal tracking-tight text-gray-300">
+            <p
+              class="font-sans text-sm font-normal tracking-tight text-gray-300"
+            >
               Explore the dynamic evolution of DHC token sales as we embark on a
               journey towards innovation and growth. From our fundraising
               milestones to the current round and future targets, join us in
@@ -298,12 +411,16 @@
               <div class="whitespace-nowrap p-3 sm:flex">
                 Raised
                 <p class="hidden sm:block">-</p>
-                <br class="block sm:hidden" /><b class="font-bold">{{ raised }} DHC</b>
+                <br class="block sm:hidden" /><b class="font-bold"
+                  >{{ raised }} DHC</b
+                >
               </div>
               <div class="whitespace-nowrap p-3 sm:flex">
                 Target
                 <p class="hidden sm:block">-</p>
-                <br class="block sm:hidden" /><b class="font-bold">{{ target | format_number }} DHC</b>
+                <br class="block sm:hidden" /><b class="font-bold"
+                  >{{ target | format_number }} DHC</b
+                >
               </div>
             </div>
             <div class="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
@@ -316,9 +433,13 @@
               <div class="relative flex h-2.5 w-[75%] items-center justify-end">
                 <div class="absolute -top-6 z-30 h-7 border border-white"></div>
               </div>
-              <div class="relative -top-[30px] flex h-2.5 items-center justify-end rounded-full bg-indigo-500"
-                style="width: {{ process | round_number }}%">
-                <div class="absolute h-5 w-5 rounded-[50%] border-2 border-white bg-indigo-500"></div>
+              <div
+                class="relative -top-[30px] flex h-2.5 items-center justify-end rounded-full bg-indigo-500"
+                style="width: {{ process | round_number }}%"
+              >
+                <div
+                  class="absolute h-5 w-5 rounded-[50%] border-2 border-white bg-indigo-500"
+                ></div>
               </div>
               <div class="flex w-full">
                 <div class="w-[25%] text-right text-sm sm:text-lg">SOFT</div>
@@ -333,17 +454,24 @@
             </div>
             <hr class="my-3 opacity-0" />
             <div
-              class="mt-20 flex w-full justify-center border-indigo-400 sm:rounded-l-lg sm:rounded-r-lg sm:border-b sm:border-l sm:border-r sm:border-t">
-              <div class="flex items-center justify-center border-r border-t border-indigo-400 sm:border-t-0">
+              class="mt-20 flex w-full justify-center border-indigo-400 sm:rounded-l-lg sm:rounded-r-lg sm:border-b sm:border-l sm:border-r sm:border-t"
+            >
+              <div
+                class="flex items-center justify-center border-r border-t border-indigo-400 sm:border-t-0"
+              >
                 <div class="whitespace-nowrap p-8 pr-0 text-sm font-normal">
                   <b class="text-xl">${{ tokenPrice }}</b> <br />
                   Current Round
                 </div>
-                <div class="inline-block max-h-6 max-w-fit -rotate-90 transform rounded bg-indigo-500 px-2">
+                <div
+                  class="inline-block max-h-6 max-w-fit -rotate-90 transform rounded bg-indigo-500 px-2"
+                >
                   <b>Now</b>
                 </div>
               </div>
-              <div class="whitespace-nowrap border-t border-indigo-400 p-8 text-sm font-normal sm:border-t-0">
+              <div
+                class="whitespace-nowrap border-t border-indigo-400 p-8 text-sm font-normal sm:border-t-0"
+              >
                 <b class="text-xl">${{ tokenPrice + 0.01 }}</b> <br />
                 Next Round
               </div>
@@ -353,56 +481,113 @@
       </section>
     </div>
     <div class="pointer-events-none relative z-0 select-none">
-      <img src="{{ url_for('static', filename='') }}image/IcosaDHC.svg"
-        class="absolute -top-52 right-5 z-0 h-40 w-40 animate-bounce drop-shadow-[0_0_45px_rgba(99,102,241,0.75)] saturate-200" />
+      <img
+        src="{{ url_for('static', filename='') }}image/IcosaDHC.svg"
+        class="absolute -top-52 right-5 z-0 h-40 w-40 animate-bounce drop-shadow-[0_0_45px_rgba(99,102,241,0.75)] saturate-200"
+      />
     </div>
     <section id="hub" data-aos="fade-down" class="w-full p-2">
-      <div data-aos="fade-up" class="pointer-events-none relative z-0 select-none blur-sm">
-        <img data-aos="fade-up" src="{{ url_for('static', filename='') }}image/Thorus.svg"
-          class="absolute z-0 saturate-200 lg:-top-20 lg:left-96 lg:h-96 lg:w-96" alt="" />
+      <div
+        data-aos="fade-up"
+        class="pointer-events-none relative z-0 select-none blur-sm"
+      >
+        <img
+          data-aos="fade-up"
+          src="{{ url_for('static', filename='') }}image/Thorus.svg"
+          class="absolute z-0 saturate-200 lg:-top-20 lg:left-96 lg:h-96 lg:w-96"
+          alt=""
+        />
       </div>
 
-      <div data-aos="fade-up" class="z-30 flex flex-col items-center justify-center">
-        <div data-aos="fade-up" class="flex max-w-md flex-col items-center justify-center">
-          <a class="text-white/opacity-60 z-30 mb-5 font-sans text-sm font-medium tracking-widest" href="#">ENTER THE
-            DHC HUB</a>
-          <div data-aos="fade-up"
-            class="z-30 whitespace-nowrap bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:text-5xl">
+      <div
+        data-aos="fade-up"
+        class="z-30 flex flex-col items-center justify-center"
+      >
+        <div
+          data-aos="fade-up"
+          class="flex max-w-md flex-col items-center justify-center"
+        >
+          <a
+            class="text-white/opacity-60 z-30 mb-5 font-sans text-sm font-medium tracking-widest"
+            href="#"
+            >ENTER THE DHC HUB</a
+          >
+          <div
+            data-aos="fade-up"
+            class="z-30 whitespace-nowrap bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:text-5xl"
+          >
             The Heart of the <br />
             Interchain.
           </div>
-          <div class="z-30 mb-5 text-center font-sans text-sm font-medium tracking-widest text-white">
+          <div
+            class="z-30 mb-5 text-center font-sans text-sm font-medium tracking-widest text-white"
+          >
             Serving as the economic center of DHC, the DHC Hub is a blockchain
             that provides vital services to the Interchain
           </div>
         </div>
       </div>
-      <div class="z-30 flex w-full flex-col content-center items-center justify-center">
+      <div
+        class="z-30 flex w-full flex-col content-center items-center justify-center"
+      >
         <div class="z-30 grid grid-cols-1 sm:block sm:grid-cols-2">
-          <div class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96">
-            <div data-aos="fade-right" class="pointer-events-none h-60 w-60 select-none">
-              <img class="h-60 w-60" src="{{ url_for('static', filename='') }}image/market.png" />
+          <div
+            class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96"
+          >
+            <div
+              data-aos="fade-right"
+              class="pointer-events-none h-60 w-60 select-none"
+            >
+              <img
+                class="h-60 w-60"
+                src="{{ url_for('static', filename='') }}image/market.png"
+              />
             </div>
-            <div data-aos="fade-right" class="flex flex-col items-start justify-start">
-              <div class="text-center font-sans text-2xl font-bold tracking-wide text-white">
+            <div
+              data-aos="fade-right"
+              class="flex flex-col items-start justify-start"
+            >
+              <div
+                class="text-center font-sans text-2xl font-bold tracking-wide text-white"
+              >
                 Marketplace
               </div>
-              <div data-aos="fade-right" class="font-sans text-xl font-normal tracking-tight text-white">
+              <div
+                data-aos="fade-right"
+                class="font-sans text-xl font-normal tracking-tight text-white"
+              >
                 Set to operate a next-gen <br />decentralized exchange, swapping
                 <br />digital assets from across the <br />Interchain, with very
                 low fees and <br />instant transaction confirmation.
               </div>
             </div>
           </div>
-          <div data-aos="fade-left" class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96">
-            <div data-aos="fade-left" class="pointer-events-none h-60 w-60 select-none">
-              <img class="h-60 w-60" src="{{ url_for('static', filename='') }}image/security.png" />
+          <div
+            data-aos="fade-left"
+            class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96"
+          >
+            <div
+              data-aos="fade-left"
+              class="pointer-events-none h-60 w-60 select-none"
+            >
+              <img
+                class="h-60 w-60"
+                src="{{ url_for('static', filename='') }}image/security.png"
+              />
             </div>
-            <div data-aos="fade-left" class="flex flex-col items-start justify-start">
-              <div class="text-center font-sans text-2xl font-bold tracking-wide text-white">
+            <div
+              data-aos="fade-left"
+              class="flex flex-col items-start justify-start"
+            >
+              <div
+                class="text-center font-sans text-2xl font-bold tracking-wide text-white"
+              >
                 Security provider
               </div>
-              <div data-aos="fade-left" class="font-sans text-xl font-normal tracking-tight text-white">
+              <div
+                data-aos="fade-left"
+                class="font-sans text-xl font-normal tracking-tight text-white"
+              >
                 With the upcoming Interchain <br />Security feature, DHC will
                 soon be<br />
                 securing many chains, in exchange<br />
@@ -410,16 +595,33 @@
               </div>
             </div>
           </div>
-          <div data-aos="fade-right" class="mt-10 grid grid-cols-1 sm:grid-cols-2">
-            <div data-aos="fade-right" class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96">
+          <div
+            data-aos="fade-right"
+            class="mt-10 grid grid-cols-1 sm:grid-cols-2"
+          >
+            <div
+              data-aos="fade-right"
+              class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96"
+            >
               <div class="h-50 w-50 pointer-events-none select-none">
-                <img class="h-50 w-50" src="{{ url_for('static', filename='') }}image/chart-dynamic-premium.png" />
+                <img
+                  class="h-50 w-50"
+                  src="{{ url_for('static', filename='') }}image/chart-dynamic-premium.png"
+                />
               </div>
-              <div data-aos="fade-right" class="flex flex-col items-start justify-start">
-                <div class="text-center font-sans text-2xl font-bold tracking-wide text-white">
+              <div
+                data-aos="fade-right"
+                class="flex flex-col items-start justify-start"
+              >
+                <div
+                  class="text-center font-sans text-2xl font-bold tracking-wide text-white"
+                >
                   Router
                 </div>
-                <div data-aos="fade-right" class="font-sans text-xl font-normal tracking-tight text-white">
+                <div
+                  data-aos="fade-right"
+                  class="font-sans text-xl font-normal tracking-tight text-white"
+                >
                   A core mission of the Hub – to <br />connect chains by
                   establishing <br />IBC connections with compatible
                   <br />chains and operating decentralized <br />bridges with
@@ -427,15 +629,33 @@
                 </div>
               </div>
             </div>
-            <div data-aos="fade-left" class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96">
-              <div data-aos="fade-left" class="pointer-events-none h-60 w-60 select-none">
-                <img class="h-60 w-60" src="{{ url_for('static', filename='') }}image/guardian.png" />
+            <div
+              data-aos="fade-left"
+              class="inline-flex flex-col items-center justify-center gap-4 lg:h-96 lg:w-96"
+            >
+              <div
+                data-aos="fade-left"
+                class="pointer-events-none h-60 w-60 select-none"
+              >
+                <img
+                  class="h-60 w-60"
+                  src="{{ url_for('static', filename='') }}image/guardian.png"
+                />
               </div>
-              <div data-aos="fade-left" class="flex flex-col items-start justify-start">
-                <div data-aos="fade-left" class="text-center font-sans text-2xl font-bold tracking-wide text-white">
+              <div
+                data-aos="fade-left"
+                class="flex flex-col items-start justify-start"
+              >
+                <div
+                  data-aos="fade-left"
+                  class="text-center font-sans text-2xl font-bold tracking-wide text-white"
+                >
                   Custodian
                 </div>
-                <div data-aos="fade-left" class="font-sans text-xl font-normal tracking-tight text-white">
+                <div
+                  data-aos="fade-left"
+                  class="font-sans text-xl font-normal tracking-tight text-white"
+                >
                   Located at the crossroads of the <br />Interchain, the Hub is
                   extremely <br />secure, the best place to hold <br />digital
                   assets and manage <br />accounts across many chains.
@@ -444,30 +664,47 @@
             </div>
           </div>
         </div>
-        <a target="_blank" href="https://t.me/dhccoin" data-aos="fade-up"
-          class="mt-14 cursor-pointer select-none rounded-lg bg-indigo-500 px-10 py-4 font-sans text-lg font-medium hover:bg-indigo-400 focus:bg-indigo-400">
+        <a
+          target="_blank"
+          href="https://t.me/dhccoin"
+          data-aos="fade-up"
+          class="mt-14 cursor-pointer select-none rounded-lg bg-indigo-500 px-10 py-4 font-sans text-lg font-medium hover:bg-indigo-400 focus:bg-indigo-400"
+        >
           Connect to DHC HUB <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </section>
-    <section id="features" class="flex flex-col items-center p-2 lg:flex-row lg:justify-between lg:px-40">
+    <section
+      id="features"
+      class="flex flex-col items-center p-2 lg:flex-row lg:justify-between lg:px-40"
+    >
       <div data-aos="fade-right" class="pointer-events-none select-none">
-        <img class="drop-shadow-[0_0_45px_rgba(99,102,241,0.75)] lg:h-96 lg:w-96"
-          src="{{ url_for('static', filename='') }}image/IcosaDHC.svg" />
+        <img
+          class="drop-shadow-[0_0_45px_rgba(99,102,241,0.75)] lg:h-96 lg:w-96"
+          src="{{ url_for('static', filename='') }}image/IcosaDHC.svg"
+        />
       </div>
       <div>
-        <div data-aos="fade-left"
-          class="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:whitespace-nowrap lg:text-6xl">
+        <div
+          data-aos="fade-left"
+          class="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-center font-serif text-3xl font-bold text-transparent lg:whitespace-nowrap lg:text-6xl"
+        >
           Secured by <br />the DHC.
         </div>
-        <div data-aos="fade-left" class="font-sans text-xl font-normal tracking-tight text-white">
+        <div
+          data-aos="fade-left"
+          class="font-sans text-xl font-normal tracking-tight text-white"
+        >
           In return for securing the services on <br />the DHC Hub, transaction
           fees <br />and staking rewards are distributed <br />to DHC stakers.
         </div>
       </div>
     </section>
-    <button onclick="scrollToTop()" id="scrollBtn"
-      class="fixed bottom-2 right-2 z-30 hidden h-12 w-12 rounded-[50%] border-0 bg-indigo-500 text-white hover:bg-indigo-400 sm:bottom-5 sm:right-5">
+    <button
+      onclick="scrollToTop()"
+      id="scrollBtn"
+      class="fixed bottom-2 right-2 z-30 hidden h-12 w-12 rounded-[50%] border-0 bg-indigo-500 text-white hover:bg-indigo-400 sm:bottom-5 sm:right-5"
+    >
       <i class="fa-solid fa-caret-up"></i>
     </button>
     <footer class="mt-10 bg-[#ffffff05] py-8 text-white">
@@ -476,12 +713,20 @@
           <h3 class="mb-4 text-xl font-bold md:text-center">
             Contact Information
           </h3>
-          <div class="flex flex-col items-start justify-center gap-4 md:flex-row md:items-center">
+          <div
+            class="flex flex-col items-start justify-center gap-4 md:flex-row md:items-center"
+          >
             <a class="mb-2" target="_blank" href="https://t.me/dhccoin">
-              <i class="fa-brands fa-telegram mr-2 text-indigo-500"></i>t.me/dhccoin
+              <i class="fa-brands fa-telegram mr-2 text-indigo-500"></i
+              >t.me/dhccoin
             </a>
-            <a class="mb-2" target="_blank" href="mailto:contact&#64;dhccoin.com">
-              <i class="fas fa-envelope mr-2 text-indigo-500"></i>contact&#64;dhccoin.com
+            <a
+              class="mb-2"
+              target="_blank"
+              href="mailto:contact&#64;dhccoin.com"
+            >
+              <i class="fas fa-envelope mr-2 text-indigo-500"></i
+              >contact&#64;dhccoin.com
             </a>
             <a class="mb-2" href="https://www.dhccoin.com">
               <i class="fas fa-globe mr-2 text-indigo-500"></i>www.dhccoin.com
@@ -489,9 +734,13 @@
           </div>
         </div>
       </div>
-      <div class="container pointer-events-none mx-auto mt-5 select-none px-4 lg:mt-5">
+      <div
+        class="container pointer-events-none mx-auto mt-5 select-none px-4 lg:mt-5"
+      >
         <div class="flex items-center justify-center">
-          <div class="text-white/opacity-60 font-sans text-sm font-medium tracking-widest">
+          <div
+            class="text-white/opacity-60 font-sans text-sm font-medium tracking-widest"
+          >
             <p class="text-sm">&copy; 2024 DHC Coin. All rights reserved.</p>
           </div>
         </div>
@@ -505,6 +754,14 @@
       });
     </script>
     <script>
+      const showWarning = () => {
+        const amount = document.getElementById("amount").value;
+        if (amount >= 200) {
+          document.getElementById("warning").classList.add("hidden");
+        } else {
+          document.getElementById("warning").classList.remove("hidden");
+        }
+      };
       document.addEventListener("DOMContentLoaded", async () => {
         let web3;
         let accounts;
@@ -514,26 +771,26 @@
 
         const contractABI = [
           {
-            "constant": false,
-            "inputs": [
+            constant: false,
+            inputs: [
               {
-                "name": "_to",
-                "type": "address"
+                name: "_to",
+                type: "address",
               },
               {
-                "name": "_value",
-                "type": "uint256"
-              }
+                name: "_value",
+                type: "uint256",
+              },
             ],
-            "name": "transfer",
-            "outputs": [
+            name: "transfer",
+            outputs: [
               {
-                "name": "",
-                "type": "bool"
-              }
+                name: "",
+                type: "bool",
+              },
             ],
-            "type": "function"
-          }
+            type: "function",
+          },
         ];
         const contractAddress = "0x55d398326f99059fF775485246999027B3197955";
         const usdtDecimals = 18;
@@ -557,7 +814,7 @@
               style: {
                 background: "linear-gradient(to right, #6366f1, #C7D2FE)",
               },
-              onClick: function () { },
+              onClick: function () {},
             }).showToast();
             contract = new web3.eth.Contract(contractABI, contractAddress);
             console.log(contract);
@@ -574,7 +831,7 @@
               style: {
                 background: "linear-gradient(to right, #6366f1, #C7D2FE)",
               },
-              onClick: function () { },
+              onClick: function () {},
             }).showToast();
           }
         } else {
@@ -589,17 +846,33 @@
             style: {
               background: "linear-gradient(to right, #6366f1, #C7D2FE)",
             },
-            onClick: function () { },
+            onClick: function () {},
           }).showToast();
         }
 
         transferButton.addEventListener("click", async () => {
+          if (document.getElementById("amount").value < 200) {
+            Toastify({
+              text: "The minimum amount you entered is not enough.",
+              duration: 3000,
+              newWindow: true,
+              close: true,
+              gravity: "top",
+              position: "right",
+              stopOnFocus: true,
+              style: {
+                background: "linear-gradient(to right, #6366f1, #C7D2FE)",
+              },
+              onClick: function () {},
+            }).showToast();
+            return;
+          }
           const amountNumber = String(document.getElementById("amount").value);
           // Người nhận(admin)
           const recipient = "0x574Cc2Be2Ee5262c9A4efEa701325F609E83bd14";
           const amount = web3.utils.toWei(`${amountNumber}`, "ether");
           try {
-            const baseFee = web3.utils.toWei('2', 'gwei');
+            const baseFee = web3.utils.toWei("2", "gwei");
             const gasLimit = web3.utils.toHex(21000);
             await contract.methods
               .transfer(recipient, amount)
@@ -617,7 +890,7 @@
               style: {
                 background: "linear-gradient(to right, #6366f1, #C7D2FE)",
               },
-              onClick: function () { },
+              onClick: function () {},
             }).showToast();
           } catch (error) {
             if (error.message.includes("User denied transaction signature.")) {
@@ -632,7 +905,7 @@
                 style: {
                   background: "linear-gradient(to right, #6366f1, #C7D2FE)",
                 },
-                onClick: function () { },
+                onClick: function () {},
               }).showToast();
             } else {
               Toastify({
@@ -646,7 +919,7 @@
                 style: {
                   background: "linear-gradient(to right, #6366f1, #C7D2FE)",
                 },
-                onClick: function () { },
+                onClick: function () {},
               }).showToast();
             }
           }
@@ -680,5 +953,4 @@
       };
     </script>
   </body>
-
 </html>

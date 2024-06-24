@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -852,11 +852,6 @@ video {
   margin-bottom: 0.75rem !important;
 }
 
-.my-5 {
-  margin-top: 1.25rem !important;
-  margin-bottom: 1.25rem !important;
-}
-
 .mb-2 {
   margin-bottom: 0.5rem !important;
 }
@@ -1088,10 +1083,6 @@ video {
   height: 60vh !important;
 }
 
-.h-\[calc\(100vh-50px\)\] {
-  height: calc(100vh - 50px) !important;
-}
-
 .h-fit {
   height: -moz-fit-content !important;
   height: fit-content !important;
@@ -1099,10 +1090,6 @@ video {
 
 .h-full {
   height: 100% !important;
-}
-
-.h-\[calc\(100vh-100px\)\] {
-  height: calc(100vh - 100px) !important;
 }
 
 .max-h-6 {
@@ -1819,6 +1806,10 @@ video {
 
 .gap-5 {
   gap: 1.25rem !important;
+}
+
+.gap-1 {
+  gap: 0.25rem !important;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -3448,10 +3439,6 @@ input[type=number]::-webkit-inner-spin-button {
     right: 1.25rem !important;
   }
 
-  .sm\:m-5 {
-    margin: 1.25rem !important;
-  }
-
   .sm\:block {
     display: block !important;
   }
@@ -3470,10 +3457,6 @@ input[type=number]::-webkit-inner-spin-button {
 
   .sm\:w-1\/2 {
     width: 50% !important;
-  }
-
-  .sm\:w-11\/12 {
-    width: 91.666667% !important;
   }
 
   .sm\:w-fit {
@@ -3703,13 +3686,13 @@ input[type=number]::-webkit-inner-spin-button {
     line-height: 1 !important;
   }
 
-  .lg\:text-9xl {
-    font-size: 8rem !important;
+  .lg\:text-8xl {
+    font-size: 6rem !important;
     line-height: 1 !important;
   }
 
-  .lg\:text-8xl {
-    font-size: 6rem !important;
+  .lg\:text-9xl {
+    font-size: 8rem !important;
     line-height: 1 !important;
   }
 
